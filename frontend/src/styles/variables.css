@@ -1,0 +1,35 @@
+:root {
+  /* Font Sizes - Mobile */
+  --font-size-500: 0.8125rem;
+  --font-size-750: 0.8125rem;
+  --font-size-1000: 1rem;
+  --font-size-2000: 1.0938rem;
+  --font-size-3000: 1.3672rem;
+  --font-size-4000: 1.6954rem;
+  --font-size-5000: 2.1328rem;
+  --font-size-6000: 2.6797rem;
+  --font-size-7000: 3.3381rem;
+
+  /* Colors */
+  --white: #fff;
+  --dark-100: #211e22;
+  --color-purple-100: #7b189f;
+  
+  /* Container */
+  --container-max-width: 1600px;
+}
+
+/* Tablet and up */
+@media (min-width: 640px) {
+  :root {
+    --font-size-500: 0.8125rem;
+    --font-size-750: 1rem;
+    --font-size-1000: 1rem;
+    --font-size-2000: 1.25rem;
+    --font-size-3000: 1.5625rem;
+    --font-size-4000: 1.9375rem;
+    --font-size-5000: 2.4375rem;
+    --font-size-6000: 3.0625rem;
+    --font-size-7000: 3.815rem;
+  }
+} 
