@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@import "./styles/breakpoints.css";
+@import "./styles/variables.css";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container-90-auto {
+  width: 90vw;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-white {
+  color: #fff;
+}
+.text-dark {
+  color: #211e22;
+}
+.anchor-1 {
+  @apply transition-all duration-200;
+}
+.anchor-1:hover {
+  @apply underline;
+}
+
+.anchor-2 {
+  @apply transition-all duration-200;
+}
+
+.anchor-2:hover {
+  @apply underline;
+}
