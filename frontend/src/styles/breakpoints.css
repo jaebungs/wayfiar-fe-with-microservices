@@ -1,3 +1,4 @@
+/* example className="tablet:w-10" */
 @theme {
     --breakpoint-tablet: 640px;
     --breakpoint-desktop: 1120px;
