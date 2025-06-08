@@ -6,11 +6,6 @@ export default {
   ],
   theme: {
     extend: {
-      screens: {
-        'tablet': '640px',
-        'desktop': '1120px',
-        'wide': '1780px',
-      },
       colors: {
         'white': 'var(--white)',
         'dark-100': 'var(--dark-100)',
