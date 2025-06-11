@@ -6,6 +6,7 @@
  */
 import { useState } from 'react';
 import Drawer from '@/components/common/Drawer';
+import Search from '@/components/common/Search';
 import MobileSubMenu from '@/components/navigation/MobileSubMenu';
 import HamburgerMenuIcon from '@/assets/icons/hamburgerMenu.svg?react';
 import WayfairTextLogo from '@/assets/icons/wayfairTextLogo.svg?react';
@@ -24,9 +25,10 @@ function GlobalNav() {
       <Drawer isOpen={isMobileMenuOpen} onClose={mobileSideMenuClose}>
         <MobileSubMenu onClose={mobileSideMenuClose} />
       </Drawer>
-      <div className="flex justify-between items-center">
+      
+      <div className="flex justify-between items-center px-6">
         <button
-          className="w-10 h-10 flex justify-center items-center text-black hover:text-purple-100"
+          className="w-10 h-10 flex justify-center items-center text-black hover:text-purple-100 desktop:hidden"
           onClick={() => setIsMobileMenuOpen(true)}
         >
           <div className="w-6 h-6 tablet:w-7.5 tablet:h-7.5">
@@ -39,8 +41,14 @@ function GlobalNav() {
           </a>
         </div>
 
+        <div className="hidden desktop:block">
+            <Search />
+        </div>
+
         <div className="flex gap-1">
-          <button className=" desktop:hidden">Flag</button>
+          <button className="hidden desktop:block">
+            Flag
+          </button>
 
           <button className="flex justify-center items-center gap-1 text-black hover:text-purple-100">
             Sign In
@@ -54,6 +62,11 @@ function GlobalNav() {
             </div>
           </button>
         </div>
+      </div>
+
+      {/* Search input in mobile viewport */}
+      <div className='flex items-center px-6 desktop:hidden'>
+        <Search />
       </div>
     </div>
   );
