@@ -1,5 +1,5 @@
 import React from 'react';
-import WayfairTextLogo from "@/assets/icons/wayfairTextLogo.svg?react"
+import WayfairTextLogo from '@/assets/icons/wayfairTextLogo.svg?react';
 
 interface Department {
   id: string;
@@ -23,12 +23,12 @@ const departments: Department[] = [
 // Menu component props
 interface MobileSubMenuProps {
   onClose: () => void;
-  departments?: Department[]
+  departments?: Department[];
 }
 
-const MobileSubMenu: React.FC<MobileSubMenuProps> = ({ 
-  onClose, 
-  departments: customDepartments = departments 
+const MobileSubMenu: React.FC<MobileSubMenuProps> = ({
+  onClose,
+  departments: customDepartments = departments,
 }) => {
   return (
     <div className="flex flex-col h-full bg-white">
@@ -40,8 +40,18 @@ const MobileSubMenu: React.FC<MobileSubMenuProps> = ({
             className="p-1 px-3 rounded-md hover:bg-gray-100 transition-colors"
             aria-label="Close menu"
           >
-            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg
+              className="w-6 h-6 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
           <a href="/" className="w-[160px] h-[45px] block px-2">
@@ -51,18 +61,38 @@ const MobileSubMenu: React.FC<MobileSubMenuProps> = ({
       </div>
 
       {/* Menu Content */}
-      <div className="flex-1">
+      <div className="flex-1 overflow-auto">
         <div className="px-4 py-2">
           <div className="flex items-center py-3 hover:bg-gray-50 rounded-lg px-2 cursor-pointer transition-colors">
-            <svg className="w-6 h-6 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            <svg
+              className="w-6 h-6 text-gray-600 mr-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+              />
             </svg>
             <span className="text-gray-700 font-medium">Lists</span>
           </div>
 
           <div className="flex items-center py-3 hover:bg-gray-50 rounded-lg px-2 cursor-pointer transition-colors">
-            <svg className="w-6 h-6 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            <svg
+              className="w-6 h-6 text-gray-600 mr-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+              />
             </svg>
             <span className="text-gray-700 font-medium">My Orders</span>
           </div>
@@ -71,7 +101,7 @@ const MobileSubMenu: React.FC<MobileSubMenuProps> = ({
         {/* Departments Section */}
         <div className="px-4 py-2">
           <h2 className="text-lg font-semibold text-gray-900 mb-3">Departments</h2>
-          
+
           <div className="space-y-1">
             {customDepartments.map((department) => (
               <div
@@ -84,13 +114,18 @@ const MobileSubMenu: React.FC<MobileSubMenuProps> = ({
                   </div>
                   <span className="text-gray-700 font-medium">{department.name}</span>
                 </div>
-                <svg 
-                  className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </div>
             ))}
@@ -105,7 +140,7 @@ const MobileSubMenu: React.FC<MobileSubMenuProps> = ({
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MobileSubMenu
+export default MobileSubMenu;
