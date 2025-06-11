@@ -1,7 +1,5 @@
 function SideDrawerMenu() {
-    return (
-        <div></div>
-    )
+  return <div></div>;
 }
 
-export default SideDrawerMenu
+export default SideDrawerMenu;

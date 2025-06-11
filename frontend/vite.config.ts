@@ -1,14 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-import svgr from 'vite-plugin-svgr'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    react(),
-    svgr()
-  ],
+  plugins: [tailwindcss(), react(), svgr()],
   resolve: {
     alias: {
       '@': '/src',
@@ -16,4 +12,4 @@ export default defineConfig({
       '@assets': '/src/assets',
     },
   },
-})
+});

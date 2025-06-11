@@ -15,7 +15,7 @@
   --dark-100: #211e22;
   --color-purple-100: #7b189f;
   --color-purple-200: #893caa;
-  
+
   /* Container */
   --container-max-width: 1600px;
 }
@@ -33,4 +33,4 @@
     --font-size-6000: 3.0625rem;
     --font-size-7000: 3.815rem;
   }
-} 
+}

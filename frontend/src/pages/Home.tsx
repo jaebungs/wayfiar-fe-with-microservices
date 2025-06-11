@@ -1,6 +1,6 @@
-import React from 'react'
-import TopBanner from '../components/navigation/TopBanner'
-import GlobalNav from '../components/navigation/GlobalNav'
+import React from 'react';
+import TopBanner from '../components/navigation/TopBanner';
+import GlobalNav from '../components/navigation/GlobalNav';
 
 function Home() {
   return (
@@ -9,7 +9,7 @@ function Home() {
       <GlobalNav />
       <h1>Home Page</h1>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
