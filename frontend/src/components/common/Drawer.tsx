@@ -17,14 +17,14 @@ const Drawer: React.FC<DrawerProps> = ({
 }) => {
   const slideOutDirection = side === 'left' ? '-translate-x-full' : 'translate-x-full';
 
-  function handleEscape(e: KeyboardEvent) {
-    if (e.key === 'Escape' && isOpen) {
-      onClose();
-    }
-  }
   useEffect(() => {
+    function handleEscape(e: KeyboardEvent) {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    }
+    
     document.addEventListener('keydown', handleEscape);
-
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isOpen, onClose]);
 
