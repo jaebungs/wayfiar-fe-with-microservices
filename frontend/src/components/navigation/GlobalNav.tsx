@@ -1,23 +1,17 @@
-/**
- *
- * 1.Sub menus become side drawer menu
- * 2. structure changes but have the same components as the desktop, except the hamburger menu icon
- * 3.
- */
-import { useState } from 'react';
-import Drawer from '@/components/common/Drawer';
-import Search from '@/components/common/Search';
-import MobileSubMenu from '@/components/navigation/MobileSubMenu';
-import HamburgerMenuIcon from '@/assets/icons/hamburgerMenu.svg?react';
-import WayfairTextLogo from '@/assets/icons/wayfairTextLogo.svg?react';
-import Signin from '@/assets/icons/signin.svg?react';
-import Cart from '@/assets/icons/cart.svg?react';
+import { useState } from 'react'
+import Drawer from '@/components/common/Drawer'
+import Search from '@/components/common/Search'
+import MobileSubMenu from '@/components/navigation/MobileSubMenu'
+import HamburgerMenuIcon from '@/assets/icons/hamburgerMenu.svg?react'
+import WayfairTextLogo from '@/assets/icons/wayfairTextLogo.svg?react'
+import Signin from '@/assets/icons/signin.svg?react'
+import Cart from '@/assets/icons/cart.svg?react'
 
 function GlobalNav() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   function mobileSideMenuClose() {
-    setIsMobileMenuOpen(false);
+    setIsMobileMenuOpen(false)
   }
 
   return (
@@ -69,7 +63,7 @@ function GlobalNav() {
         <Search />
       </div>
     </div>
-  );
+  )
 }
 
-export default GlobalNav;
+export default GlobalNav
