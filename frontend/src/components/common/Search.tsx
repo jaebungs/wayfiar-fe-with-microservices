@@ -9,12 +9,15 @@ const Search: React.FC<Record<string, never>> = () => {
 
   return (
     <div className="flex w-full">
-      <div className="relative flex-1 pl-2">
+      <div className="relative w-full">
         <input
-          className="w-full flex h-12 border-1 rounded-l-md p-4 pr-10"
+          name='product-search'
+          aria-label='product search'
+          className='h-12 border-1 rounded-l-md p-4 pr-10 w-full'
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="May not find anything bc it's a fake site"
+          autoComplete="off"
         />
         {searchValue && (
           <button

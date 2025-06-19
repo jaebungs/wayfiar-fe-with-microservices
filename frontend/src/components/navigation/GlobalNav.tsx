@@ -36,29 +36,29 @@ function GlobalNav() {
           </div>
 
           {/* desktop search ui */}
-          <div className="hidden desktop:block flex-1">
+          <div className="hidden desktop:block flex-1 m-3">
             <Search />
           </div>
 
           <div className="flex gap-1">
-            <button className="hidden desktop:block">Flag</button>
-
             <button className="flex justify-center items-center gap-1 text-black hover:text-purple-100">
-              Sign In
+            <span className="block desktop:hidden">Sign In</span>
               <div className="w-6 h-6 tablet:w-7.5 tablet:h-7.5">
                 <Signin className="stroke-[0.5]" />
               </div>
+              <span className="hidden desktop:block">Sign In</span>
             </button>
             <button className="flex justify-center items-center gap-1 p-2 text-black hover:text-purple-100">
               <div className="w-6 h-6 tablet:w-7.5 tablet:h-7.5">
                 <Cart className="stroke-[0.5]" />
               </div>
+              <span className="hidden desktop:block">Cart</span>
             </button>
           </div>
         </div>
 
         {/* Search input in mobile viewport */}
-        <div className="flex items-center px-6 desktop:hidden">
+        <div className="flex items-center px-6 my-3 desktop:hidden">
           <Search />
         </div>
       </div>
