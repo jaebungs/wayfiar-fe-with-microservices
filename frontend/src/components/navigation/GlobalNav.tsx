@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Drawer from '@/components/common/Drawer';
 import Search from '@/components/common/Search';
 import MobileSubMenu from '@/components/navigation/MobileSubMenu';
@@ -24,15 +25,16 @@ function GlobalNav() {
           <button
             className="w-10 h-10 flex justify-center items-center text-black hover:text-purple-100 desktop:hidden"
             onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open mobile menu"
           >
             <div className="w-6 h-6 tablet:w-7.5 tablet:h-7.5">
               <HamburgerMenuIcon className="stroke-[1.5] tablet:stroke-0.5" />
             </div>
           </button>
           <div>
-            <a href="/" className="w-[145px] h-[45px] block">
+            <Link to="/" className="w-[145px] h-[45px] block">
               <WayfairTextLogo className="w-full h-full" />
-            </a>
+            </Link>
           </div>
 
           {/* desktop search ui */}
@@ -41,14 +43,22 @@ function GlobalNav() {
           </div>
 
           <div className="flex gap-1">
-            <button className="flex justify-center items-center gap-1 text-black hover:text-purple-100">
-            <span className="block desktop:hidden">Sign In</span>
-              <div className="w-6 h-6 tablet:w-7.5 tablet:h-7.5">
-                <Signin className="stroke-[0.5]" />
-              </div>
+            <Link 
+              to="/signin"
+              className="flex justify-center items-center gap-1 text-black hover:text-purple-100"
+              aria-label="Sign in to your account"
+            >
+              <span className="block desktop:hidden">Sign In</span>
+                <div className="w-6 h-6 tablet:w-7.5 tablet:h-7.5">
+                  <Signin className="stroke-[0.5]" />
+                </div>
               <span className="hidden desktop:block">Sign In</span>
-            </button>
-            <button className="flex justify-center items-center gap-1 p-2 text-black hover:text-purple-100">
+            </Link>
+            <button 
+              className="flex justify-center items-center gap-1 p-2 text-black hover:text-purple-100"
+              type="button"
+              aria-label="View shopping cart"
+            >
               <div className="w-6 h-6 tablet:w-7.5 tablet:h-7.5">
                 <Cart className="stroke-[0.5]" />
               </div>
