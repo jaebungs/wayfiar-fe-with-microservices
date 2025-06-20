@@ -19,6 +19,7 @@ const Signin = () => {
                 <EmailInput
                     placeholder="Email Address"
                     className='w-full'
+                    componentClass='w-full'
                     required
                 />
                 <button className='w-full p-4 rounded-4xl text-white font-medium bg-purple-100 hover:bg-purple-200'>
