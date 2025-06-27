@@ -13,7 +13,6 @@ export interface ValidationResult {
  * @returns ValidationResult with validation status and error message
  */
 export const validateEmail = (email: string): ValidationResult => {
-    console.log(email)
   if (!email) {
     return {
       isValid: false,
@@ -23,7 +22,6 @@ export const validateEmail = (email: string): ValidationResult => {
   
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    console.log('wrong')
     return {
       isValid: false,
       errorMessage: 'Please enter a valid email address'
