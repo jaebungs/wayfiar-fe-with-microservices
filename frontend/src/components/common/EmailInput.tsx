@@ -1,5 +1,5 @@
 import React, { useState, forwardRef } from 'react';
-import { validateEmailOnBlur } from '@/utils/validation'
+import { validateEmailOnBlur } from '@/utils/emailValidation'
 
 interface EmailInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
   label?: string;
