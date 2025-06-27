@@ -1,4 +1,5 @@
 import { forwardRef, useState } from 'react'
+import { validatePasswordOnBlur } from '@/utils/passwordValidation'
 
 interface PasswordProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
   label?: string
@@ -33,10 +34,9 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordProps>(
 
       // Perform validation on blur if enabled
       if (validateOnBlur) {
-        //   const error = validateEmailOnBlur(value as string)
+          const error = validatePasswordOnBlur(value as string)
       }
 
-      // onBlur?.(event)
     }
 
     return (
