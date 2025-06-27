@@ -26,7 +26,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordProps>(
     ref
   ) => {
     const [isFocused, setIsFocused] = useState(false)
-    const [isHidden, setIsHidden] = useState(true)
+    const [showPassword, setshowPassword] = useState(false)
 
     function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
       setIsFocused(false)
@@ -43,7 +43,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordProps>(
       <div className={componentClass}>
         <div className="relative">
           <input
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             ref={ref}
             aria-label={label}
             onBlur={handleBlur}
@@ -54,9 +54,9 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordProps>(
           />
           <button
             className="absolute text-purple-100 underline hover:no-underline right-3 top-1/2 -translate-y-1/2 p-2"
-            onClick={() => setIsHidden(!isHidden)}
+            onClick={() => setshowPassword(!showPassword)}
           >
-            {isHidden ? 'show' : 'hide'}
+            {showPassword ? 'hide' : 'show'}
           </button>
         </div>
       </div>
