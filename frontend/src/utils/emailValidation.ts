@@ -64,4 +64,4 @@ export const validateEmailOnBlur = (email: string): string => {
     return ''; // Don't show error on blur if empty
   }
   return getEmailError(email);
-}; 
+}

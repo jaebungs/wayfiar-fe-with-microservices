@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { validateEmail, getEmailError, isEmailValid } from './validation'
+import { validateEmail, getEmailError, isEmailValid } from './emailValidation'
 
 describe('Email Validation',() => {
     it('should return error for empty input', () => {
