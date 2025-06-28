@@ -1,0 +1,36 @@
+{
+  "name": "wayfair-services",
+  "version": "1.0.0",
+  "description": "Microservices for Wayfair clone",
+  "private": true,
+  "workspaces": [
+    "auth-service",
+    "user-service",
+    "product-service"
+  ],
+  "scripts": {
+    "dev:auth": "cd auth-service && npm run dev",
+    "dev:user": "cd user-service && npm run dev",
+    "dev:product": "cd product-service && npm run dev",
+    "dev:all": "concurrently \"npm run dev:auth\" \"npm run dev:user\" \"npm run dev:product\"",
+    "build:auth": "cd auth-service && npm run build",
+    "build:user": "cd user-service && npm run build",
+    "build:product": "cd product-service && npm run build",
+    "build:all": "npm run build:auth && npm run build:user && npm run build:product",
+    "lint:auth": "cd auth-service && npm run lint",
+    "lint:user": "cd user-service && npm run lint",
+    "lint:product": "cd product-service && npm run lint",
+    "lint:all": "npm run lint:auth && npm run lint:user && npm run lint:product",
+    "format:auth": "cd auth-service && npm run format",
+    "format:user": "cd user-service && npm run format",
+    "format:product": "cd product-service && npm run format",
+    "format:all": "npm run format:auth && npm run format:user && npm run format:product",
+    "install:all": "npm install && cd auth-service && npm install && cd ../user-service && npm install && cd ../product-service && npm install"
+  },
+  "keywords": ["microservices", "wayfair", "clone"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
