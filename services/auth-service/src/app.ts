@@ -1,12 +1,30 @@
-import  express, { Express, Request, Response } from 'express' 
+import express, { Express, Request, Response } from 'express'
 import pool from './db/connection'
+import userRoutes from './routes/userRoutes'
 
-const app:Express = express()
+const app: Express = express()
 const port = 3000
+
+// Middleware to parse JSON requests
+app.use(express.json())
+
+// Routes
+app.use('/auth', userRoutes)
 
 app.get('/', async (req:Request, res:Response) => {
   try {
     const result = await pool.query('SELECT NOW() as current_time')
+    // Init user table
+    // await pool.query(`
+    //   CREATE TABLE IF NOT EXISTS users (
+    //   id SERIAL PRIMARY KEY,
+    //   email VARCHAR(255) UNIQUE NOT NULL,
+    //   password VARCHAR(255) NOT NULL,
+    //   role VARCHAR(15) DEFAULT 'USER',
+    //   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    //   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    // )
+    //   `)
     res.json({
       message: 'Auth service: database connection success!',
       currentTime: result.rows[0].current_time
