@@ -4,6 +4,7 @@ import EmailInput from '@/components/common/EmailInput'
 import PasswordInput from '@/components/common/PasswordInput'
 import WayfairTextLogo from '@/assets/icons/wayfairTextLogo.svg?react'
 import { getEmailError } from '@/utils/emailValidation'
+import { AuthService } from '@/services/authService'
 
 const Signin = () => {
   const [currentPage, setCurrentPage] = useState('email')
@@ -31,9 +32,9 @@ const Signin = () => {
     }
   }
 
-  const handleEmailSubmit = (event: React.FormEvent) => {
+  const handleEmailSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
-    console.log('sumbit?')
+    if (!email) setEmailError('Email is reuqired')
 
     const emailValidationError = getEmailError(email)
     if (emailValidationError) {
@@ -41,7 +42,18 @@ const Signin = () => {
       return
     }
 
-    setCurrentPage('password-new')
+    try {
+      const existingUser = await AuthService.checkEmailExists(email)
+      
+      if (existingUser.exists) {
+        setCurrentPage('sign-up')
+      } else {
+        setCurrentPage('sign-in')
+      }
+    } catch (error) {
+      console.log('email check error:', error)
+      setEmailError('Email check network error.')
+    }
   }
 
   return (
@@ -88,7 +100,7 @@ const Signin = () => {
         )}
 
         {/* Create Password step */}
-        {currentPage === 'password-new' && (
+        {currentPage === 'sign-up' && (
           <div className='w-full'>
             <div className='flex flex-col justify-center items-center'>
               <h1 className="text-[1.5625rem] font-bold text-center">
@@ -131,3 +143,4 @@ const Signin = () => {
 }
 
 export default Signin
+
