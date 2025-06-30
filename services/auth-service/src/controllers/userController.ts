@@ -38,3 +38,34 @@ export async function signUpUser(req: Request, res: Response) {
         })
     }
 }
+
+export async function checkExistEmail(req: Request, res: Response) {
+    try {
+        const { email } = req.query
+
+        if (!email || typeof email != 'string') {
+            return res.status(400).json({
+                error: 'Email is required'
+            })
+        }
+
+        const existingUser = await findUserByEmail(email)
+
+        if (existingUser) {
+            return res.status(200).json({
+                exists: true,
+                message: 'User with this email already exists'
+            })
+        } else {
+            return res.status(200).json({
+                exists: false,
+                message: 'Email is available'
+            })
+        }
+    } catch (error) {
+        console.log('Email check error:', error)
+        res.status(500).json({
+            error: 'Internal server error during email check'
+        })
+    }
+}
