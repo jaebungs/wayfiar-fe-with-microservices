@@ -40,4 +40,29 @@ export class AuthService {
             throw new Error('Network error. Please try again.')
         }
     }
+
+    static async signUpUser(email:string, password: string, role?: string): Promise<SignUpResponse> {
+        try {
+            const response = await fetch(`${Auth_LOCAL_URL}/auth/signup`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                    role: role ? role : 'User'
+                })
+            })
+            if (!response.ok) {
+                throw new Error('Failed to sign up user')
+            }
+            
+            return await response.json()
+        } catch (error) {
+            throw new Error('Network error during signUpUser')
+        }
+    }
+
+    // static async verifyPassword(password: string): Promise<>
 }
