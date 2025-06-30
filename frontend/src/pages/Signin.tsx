@@ -46,14 +46,22 @@ const Signin = () => {
       const existingUser = await AuthService.checkEmailExists(email)
       
       if (existingUser.exists) {
-        setCurrentPage('sign-up')
-      } else {
         setCurrentPage('sign-in')
+      } else {
+        setCurrentPage('sign-up')
       }
     } catch (error) {
       console.log('email check error:', error)
       setEmailError('Email check network error.')
     }
+  }
+
+  function pageChangeToEmail() {
+    setEmail('')
+    setEmailError('')
+    setCurrentPage('email')
+    setPassword('')
+    setPasswordError('')
   }
 
   return (
@@ -65,8 +73,8 @@ const Signin = () => {
         <p className="font-medium text-base">Secure Login</p>
       </div>
 
-      {/* Email sign in or sign up step */}
       <div className="flex flex-col justify-center items-center gap-1 w-full max-w-[400px] mt-10">
+        {/* Email step */}
         {currentPage === 'email' && (
           <div>
             <h1 className="text-[1.5625rem] font-bold text-center">
@@ -99,7 +107,7 @@ const Signin = () => {
           </div>
         )}
 
-        {/* Create Password step */}
+        {/* Email don't exists, create a new password */}
         {currentPage === 'sign-up' && (
           <div className='w-full'>
             <div className='flex flex-col justify-center items-center'>
@@ -135,7 +143,54 @@ const Signin = () => {
                 Sign In
               </button>
             </form>
+
+            <div className='flex items-center gap-2 justify-center text-[1.15rem] mt-2'>
+              <p>Have an account?</p>
+              <button className="text-purple-100 underline hover:no-underline text-[1.15rem]"
+                onClick={pageChangeToEmail}>
+                  Create Account
+              </button>
+            </div>
           </div>
+        )}
+
+        {/* Email exists, sign in */}
+        { currentPage === 'sign-in' && (
+          <div className='w-full'>
+          <div className='flex flex-col justify-center items-center'>
+            <h1 className="text-[1.5625rem] font-bold text-center">
+              Welcome back!
+            </h1>
+            <p className='text-[1.15rem] mt-3'>{email}</p>
+            <button className="text-purple-100 underline hover:no-underline text-[1.15rem]" onClick={() => setCurrentPage('email')}>
+              Use a different account
+            </button>
+          </div>
+
+
+          <form
+            onSubmit={handleEmailSubmit}
+            className="flex flex-col justify-center items-center w-full gap-4"
+          >
+            <div className="w-full">
+              <PasswordInput
+                placeholder="Minimum 6 characters"
+                className={`w-full ${passwordError ? 'border-red-500' : ''}`}
+                componentClass="w-full mt-2"
+                value={password}
+                onChange={handlePasswordChange}
+                passwordError={passwordError}
+              />
+              {passwordError && <p className="text-red-500 text-sm mt-1">{passwordError}</p>}
+            </div>
+            <button
+              type="submit"
+              className="w-full p-4 rounded-4xl text-white font-medium bg-purple-100 hover:bg-purple-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Sign In
+            </button>
+          </form>
+        </div>
         )}
       </div>
     </div>
