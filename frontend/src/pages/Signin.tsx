@@ -4,6 +4,7 @@ import EmailInput from '@/components/common/EmailInput'
 import PasswordInput from '@/components/common/PasswordInput'
 import WayfairTextLogo from '@/assets/icons/wayfairTextLogo.svg?react'
 import { getEmailError } from '@/utils/emailValidation'
+import { isPasswordValid, getPasswordError } from '@/utils/passwordValidation'
 import { AuthService } from '@/services/authService'
 
 const Signin = () => {
@@ -53,6 +54,27 @@ const Signin = () => {
     } catch (error) {
       console.log('email check error:', error)
       setEmailError('Email check network error.')
+    }
+  }
+
+  async function handleSingUpSubmit(event: React.FormEvent) {
+    event.preventDefault()
+
+    if (!isPasswordValid(password)) {
+      setPasswordError(getPasswordError(password))
+      return
+    }
+    if (!email) {
+      setCurrentPage('email')
+      setEmailError('Email is reuqired')
+      return
+    }
+
+    try {
+      const newUser = await AuthService.signUpUser(email, password, 'User')
+      console.log('Sign up success!', newUser)
+    } catch (error) {
+      setPasswordError('Sign up check network error. Please try agian after a moment.')
     }
   }
 
@@ -122,7 +144,7 @@ const Signin = () => {
 
 
             <form
-              onSubmit={handleEmailSubmit}
+              onSubmit={handleSingUpSubmit}
               className="flex flex-col justify-center items-center w-full gap-4"
             >
               <div className="w-full">
@@ -140,7 +162,7 @@ const Signin = () => {
                 type="submit"
                 className="w-full p-4 rounded-4xl text-white font-medium bg-purple-100 hover:bg-purple-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Sign In
+                Create Account
               </button>
             </form>
 
@@ -148,7 +170,7 @@ const Signin = () => {
               <p>Have an account?</p>
               <button className="text-purple-100 underline hover:no-underline text-[1.15rem]"
                 onClick={pageChangeToEmail}>
-                  Create Account
+                  Sign In
               </button>
             </div>
           </div>
