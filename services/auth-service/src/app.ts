@@ -1,11 +1,16 @@
 import express, { Express, Request, Response } from 'express'
+import cors from 'cors'
 import pool from './db/connection'
 import userRoutes from './routes/userRoutes'
 
 const app: Express = express()
 const port = 3000
 
-// Middleware to parse JSON requests
+// Middleware
+app.use(cors({
+  origin: /^https?:\/\/localhost:\d+$/, // Allow any localhost port
+  credentials: true
+}))
 app.use(express.json())
 
 // Routes
