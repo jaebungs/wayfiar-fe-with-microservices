@@ -78,6 +78,26 @@ const Signin = () => {
     }
   }
 
+  async function handleSignInSubmit(event: React.FormEvent) {
+    event.preventDefault()
+
+    if (!isPasswordValid(password)) {
+      setPasswordError(getPasswordError(password))
+      return
+    }
+
+    try {
+      const user = await AuthService.signInUser(email, password)
+      
+    } catch (error) {
+      if (error instanceof Error) {
+        setPasswordError(error.message)
+      } else {
+        setPasswordError('Sign in failed. Please try again.')
+      }
+    }
+  }
+
   function pageChangeToEmail() {
     setEmail('')
     setEmailError('')
@@ -191,7 +211,7 @@ const Signin = () => {
 
 
           <form
-            onSubmit={handleEmailSubmit}
+            onSubmit={handleSignInSubmit}
             className="flex flex-col justify-center items-center w-full gap-4"
           >
             <div className="w-full">
