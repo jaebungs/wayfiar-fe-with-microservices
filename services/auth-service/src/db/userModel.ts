@@ -31,3 +31,13 @@ export async function createUser(userData: CreateUserData): Promise<User> {
     const result = await pool.query(query, [email, password, role])
     return result.rows[0]
 }
+
+export async function signInUser(email: string, password: string): Promise<User | null> {
+    const query = `
+        SELECT id, email, role, created_at, updated_at 
+        FROM users 
+        WHERE email = $1 AND password = $2
+    `
+    const result = await pool.query(query, [email, password])
+    return result.rows[0] || null
+}
