@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { createUser, findUserByEmail } from '../db/userModel'
+import { createUser, signInUser as signInUserModel, findUserByEmail } from '../db/userModel'
 
 export async function signUpUser(req: Request, res: Response) {
     try {
@@ -35,6 +35,41 @@ export async function signUpUser(req: Request, res: Response) {
         console.log('Sign up error:', error)
         res.status(500).json({
             error: 'Internal server error during sign up'
+        })
+    }
+}
+
+export async function signInUser(req: Request, res: Response) {
+    try {
+        const { email, password } = req.body
+
+        if (!email || !password) {
+            return res.status(400).json({
+                error: 'Email and password are requried.'
+            })
+        }
+
+        const logInUser = await signInUserModel(email, password)
+        
+        if (!logInUser) {
+            return res.status(401).json({
+                error: 'Invalid email or password'
+            })
+        }
+        return res.status(200).json({
+            message: 'User signed in successfully',
+            user: {
+                id: logInUser.id,
+                email: logInUser.email,
+                role: logInUser.role,
+                created_at: logInUser.created_at,
+                updated_at: logInUser.updated_at
+            }
+        })
+    } catch (error) {
+        console.log('Sign in error:', error)
+        res.status(500).json({
+            error: 'Internal server error during sign in'
         })
     }
 }
