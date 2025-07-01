@@ -20,6 +20,17 @@ export interface SignUpResponse {
         created_at: string
     }
 }
+export interface SignInResponse {
+    message: string
+    user: {
+        id: number
+        email: string
+        role: string
+        created_at: string,
+        updated_at?: string
+    }
+}
+
 
 export class AuthService {
     static async checkEmailExists(email: string): Promise<EmailCheckResponse> {
@@ -64,5 +75,30 @@ export class AuthService {
         }
     }
 
-    // static async verifyPassword(password: string): Promise<>
+    static async signInUser(email: string, password: string): Promise<SignInResponse> {
+        try {
+            const response = await fetch(`${Auth_LOCAL_URL}/auth/signin`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            })
+            
+            if (!response.ok) {
+                const errorData = await response.json()
+                throw new Error(errorData.error || 'Failed to sign in')
+            }
+            
+            return await response.json()
+        } catch (error) {
+            if (error instanceof Error) {
+                throw error
+            }
+            throw new Error('Network error during sign in')
+        }
+    }
 }
